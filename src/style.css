@@ -12,3 +12,9 @@
 .root{
 	-fx-background-color: #fff;
 }
+
+.header{
+	-fx-font-size: 32;
+	-fx-padding: 10 0;
+}
+

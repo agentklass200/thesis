@@ -51,7 +51,7 @@ public class main extends Application{
 		
 		//Label
 		Label headerTitle = new Label("Table to Text");
-		headerTitle.setStyle("-fx-font-size: 32; -fx-padding: 10 0;");
+		headerTitle.setClass("header");
 		
 		//Text Field
 		TextField CSVFileLocation = new TextField();
