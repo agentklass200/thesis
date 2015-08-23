@@ -154,5 +154,9 @@ public class InfoBean {
 				+ noAnswer + "]";
 	}
 	
+	public String specialString(){
+		return "Pogi si Alecxis";
+	}
+	
 	
 }
