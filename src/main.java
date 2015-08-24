@@ -51,7 +51,7 @@ public class main extends Application{
 		
 		//Label
 		Label headerTitle = new Label("Table to Text");
-		headerTitle.setClass("header");
+		headerTitle.getStyleClass().add("header");
 		
 		//Text Field
 		TextField CSVFileLocation = new TextField();
