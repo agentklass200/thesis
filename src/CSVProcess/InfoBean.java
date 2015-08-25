@@ -1,5 +1,5 @@
 package CSVProcess;
-import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.*;
 
 public class InfoBean {
 	String region;
@@ -9,6 +9,29 @@ public class InfoBean {
 	serviceWorkers, farmers, trades;
 	int operators, laborers, none,
 	noAnswer;
+	
+	public SimpleStringProperty regionView;
+	public SimpleIntegerProperty totalView, specialOccupationView,officialsView,professionalsView;
+	public SimpleIntegerProperty techniciansView, clerksView, serviceWorkersView, farmersView, tradesView;
+	public SimpleIntegerProperty operatorsView, laborersView, noneView, noAnswerView;
+	
+	public void populateView(){
+		this.regionView = new SimpleStringProperty(this.region);
+		this.totalView = new SimpleIntegerProperty(this.total);
+		this.specialOccupationView = new SimpleIntegerProperty(this.specialOccupation);
+		this.officialsView = new SimpleIntegerProperty(this.officials);
+		this.professionalsView = new SimpleIntegerProperty(this.professionals);
+		this.techniciansView = new SimpleIntegerProperty(this.technicians);
+		this.clerksView = new SimpleIntegerProperty(this.clerks);
+		this.serviceWorkersView = new SimpleIntegerProperty(this.serviceWorkers);
+		this.farmersView = new SimpleIntegerProperty(this.farmers); 
+		this.tradesView = new SimpleIntegerProperty(this.trades);
+		this.operatorsView = new SimpleIntegerProperty(this.operators);
+		this.laborersView = new SimpleIntegerProperty(this.laborers);
+		this.noneView = new SimpleIntegerProperty(this.none);
+		this.noAnswerView = new SimpleIntegerProperty(this.noAnswer);
+	}
+
 	
 	public String getRegion() {
 		return region;
@@ -153,10 +176,9 @@ public class InfoBean {
 				+ trades + ", operators=" + operators + ", laborers=" + laborers + ", none=" + none + ", noAnswer="
 				+ noAnswer + "]";
 	}
+
+
 	
-	public String specialString(){
-		return "Pogi si Alecxis";
-	}
 	
 	
 }

@@ -26,8 +26,10 @@ public class CSVProcessing {
 			InfoBean bean;
 			
 			data = new ArrayList<InfoBean>();
+
 			while((bean = beanReader.read(InfoBean.class, header, processor)) != null){
 				data.add(bean);
+
 			}
 			
 			return data;

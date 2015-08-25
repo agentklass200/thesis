@@ -148,24 +148,69 @@ public class main extends Application{
 		ObservableList<InfoBean> values = FXCollections.observableArrayList(data);
 		table.setEditable(false);
 		
-		TableColumn regionCol = new TableColumn(data.get(0).getRegionColumnName());
+		for (int i = 0 ; i < values.size(); i++){
+			values.get(0).populateView();
+		}
+		
+		TableColumn<InfoBean, String> regionCol = new TableColumn<InfoBean, String>(data.get(0).getRegionColumnName());
+		regionCol.setMinWidth(50);
 		regionCol.setCellValueFactory(new PropertyValueFactory<InfoBean, String>("region"));
 		
-		TableColumn totalCol = new TableColumn(data.get(0).getTotalColumnName());
-		TableColumn specialWorkersCol = new TableColumn(data.get(0).getServiceWorkersColumnName());
-		TableColumn officialsCol = new TableColumn(data.get(0).getOfficialsColumnName());
-		TableColumn professionalsCol = new TableColumn(data.get(0).getProfessionalsColumnName());
-		TableColumn techniciansCol = new TableColumn(data.get(0).getTechniciansColumnName());
-		TableColumn clerksCol = new TableColumn(data.get(0).getClerksColumnName());
-		TableColumn serviceWorkersCol = new TableColumn(data.get(0).getServiceWorkersColumnName());
-		TableColumn farmersCol = new TableColumn(data.get(0).getFarmersColumnName());
-		TableColumn tradesCol = new TableColumn(data.get(0).getTradesColumnName());
-		TableColumn operatorsCol = new TableColumn(data.get(0).getOperatorsColumnName());
-		TableColumn laborersCol = new TableColumn(data.get(0).getLaborersColumnName());
-		TableColumn noneCol = new TableColumn(data.get(0).getNoneColumnName());
-		TableColumn noAnswerCol = new TableColumn(data.get(0).getNoAnswerColumnName());
+		TableColumn<InfoBean, Integer> totalCol = new TableColumn<InfoBean, Integer>(data.get(0).getTotalColumnName());
+		totalCol.setMinWidth(50);
+		totalCol.setCellValueFactory(new PropertyValueFactory<InfoBean, Integer>("total"));
+
+		TableColumn<InfoBean, Integer> specialOccupationCol = new TableColumn<InfoBean, Integer>(data.get(0).getSpecialOccupationColumnName());
+		specialOccupationCol.setMinWidth(50);
+		specialOccupationCol.setCellValueFactory(new PropertyValueFactory<InfoBean, Integer>("specialOccupation"));
+
+		TableColumn<InfoBean, Integer> officialsCol = new TableColumn<InfoBean, Integer>(data.get(0).getOfficialsColumnName());
+		officialsCol.setMinWidth(50);
+		officialsCol.setCellValueFactory(new PropertyValueFactory<InfoBean, Integer>("officials"));
+
+		TableColumn<InfoBean, Integer> professionalsCol = new TableColumn<InfoBean, Integer>(data.get(0).getProfessionalsColumnName());
+		professionalsCol.setMinWidth(50);
+		professionalsCol.setCellValueFactory(new PropertyValueFactory<InfoBean, Integer>("professionals"));
+
+		TableColumn<InfoBean, Integer> techniciansCol = new TableColumn<InfoBean, Integer>(data.get(0).getTechniciansColumnName());
+		techniciansCol.setMinWidth(50);
+		techniciansCol.setCellValueFactory(new PropertyValueFactory<InfoBean, Integer>("technicians"));
+
+		TableColumn<InfoBean, Integer> clerksCol = new TableColumn<InfoBean, Integer>(data.get(0).getClerksColumnName());
+		clerksCol.setMinWidth(50);
+		clerksCol.setCellValueFactory(new PropertyValueFactory<InfoBean, Integer>("clerks"));
+
+		TableColumn<InfoBean, Integer> serviceWorkersCol = new TableColumn<InfoBean, Integer>(data.get(0).getServiceWorkersColumnName());
+		serviceWorkersCol.setMinWidth(50);
+		serviceWorkersCol.setCellValueFactory(new PropertyValueFactory<InfoBean, Integer>("ServiceWorkers"));
+
+		TableColumn<InfoBean, Integer> farmersCol = new TableColumn<InfoBean, Integer>(data.get(0).getFarmersColumnName());
+		farmersCol.setMinWidth(50);
+		farmersCol.setCellValueFactory(new PropertyValueFactory<InfoBean, Integer>("farmers"));
+
+		TableColumn<InfoBean, Integer> tradesCol = new TableColumn<InfoBean, Integer>(data.get(0).getTradesColumnName());
+		tradesCol.setMinWidth(50);
+		tradesCol.setCellValueFactory(new PropertyValueFactory<InfoBean, Integer>("trades"));
+
+		TableColumn<InfoBean, Integer> operatorsCol = new TableColumn<InfoBean, Integer>(data.get(0).getOperatorsColumnName());
+		operatorsCol.setMinWidth(50);
+		operatorsCol.setCellValueFactory(new PropertyValueFactory<InfoBean, Integer>("operators"));
+
+		TableColumn<InfoBean, Integer> laborersCol = new TableColumn<InfoBean, Integer>(data.get(0).getLaborersColumnName());
+		laborersCol.setMinWidth(50);
+		laborersCol.setCellValueFactory(new PropertyValueFactory<InfoBean, Integer>("laborers"));
+
+		TableColumn<InfoBean, Integer> noneCol = new TableColumn<InfoBean, Integer>(data.get(0).getNoneColumnName());
+		noneCol.setMinWidth(50);
+		noneCol.setCellValueFactory(new PropertyValueFactory<InfoBean, Integer>("none"));
+
+		TableColumn<InfoBean, Integer> noAnswerCol = new TableColumn<InfoBean, Integer>(data.get(0).getNoAnswerColumnName());
+		noAnswerCol.setMinWidth(50);
+		noAnswerCol.setCellValueFactory(new PropertyValueFactory<InfoBean, Integer>("noAnswer"));
 		
-		table.getColumns().addAll(regionCol, totalCol, specialWorkersCol, officialsCol, professionalsCol, techniciansCol, clerksCol, serviceWorkersCol, farmersCol, tradesCol, operatorsCol, laborersCol, noneCol, noAnswerCol );
+		table.getColumns().addAll(regionCol, totalCol, specialOccupationCol, officialsCol, professionalsCol, techniciansCol, clerksCol, serviceWorkersCol, farmersCol, tradesCol, operatorsCol, laborersCol, noneCol, noAnswerCol );
+		
+		table.setItems(values);
 		
 		for(int i = 0; i < values.size(); i++){
 			System.out.println(values.get(i).toString());
