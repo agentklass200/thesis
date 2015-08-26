@@ -23,6 +23,7 @@ public class main extends Application{
 	
 	Button getCSVFile, next, prev;
 	
+	//BLABLABLA
 	
 	Stage window;
 	Scene scene[], activeScene;
