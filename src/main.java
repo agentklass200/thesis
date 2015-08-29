@@ -29,6 +29,7 @@ public class main extends Application{
 	Scene scene[], activeScene;
 	File activeFile;
 	ArrayList<InfoBean> data;
+
 	
 	
 	public static void main(String[] args){
@@ -228,5 +229,6 @@ public class main extends Application{
 		}
 		return scene[counter + 1];
 	}
+
 	
 }

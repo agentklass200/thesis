@@ -32,7 +32,7 @@ public class InfoBean {
 		this.noAnswerView = new SimpleIntegerProperty(this.noAnswer);
 	}
 
-	
+
 	public String getRegion() {
 		return region;
 	}
