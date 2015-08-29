@@ -103,7 +103,7 @@ public class main extends Application{
 				
 		scene[1] = new Scene(layout1, 700, 500);
 				
-		//Initializing Stage
+		//Initializing Stage Hello World!
 		
 		window.setScene(activeScene);
 		window.show();
