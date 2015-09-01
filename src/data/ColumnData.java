@@ -12,33 +12,45 @@ public class ColumnData {
 	
 	ColumnData(ArrayList<InfoBean> data){
 		this.noOfColumns = data.size();
+		this.setTtotal(data);
+		this.setTspecialOccupation(data);
+		this.setTclerks(data);
+		this.setTfarmers(data);
+		this.setTlaborers(data);
+		this.setTnoAnswer(data);
+		this.setTnone(data);
+		this.setTofficials(data);
+		this.setToperators(data);
+		this.setTprofessionals(data);
+		this.setTserviceWorkers(data);
+		this.setTtechnicians(data);
+		this.setTtrades(data);
 	}
 	
 	public int getTtotal() {
 		return Ttotal;
 	}
 
-	public double getTotalPercentage() {
-		return (Ttotal / noOfColumns) * 100;
+	public double getTotalPercentage(InfoBean row) {
+		return (row.getTotal()/Ttotal) * 100;
 	}
 
-	public void setTtotal(int[] Ttotal) {
+	public void setTtotal(ArrayList<InfoBean> data) {
 		for(int i = 0; i < noOfColumns; i++){
-			this.Ttotal = this.Ttotal + Ttotal[i];
+			this.Ttotal = this.Ttotal + data.get(i).getTotal();
 		}
 	}
-
 	public int getTspecialOccupation() {
 		return TspecialOccupation;
 	}
 
-	public double getSpecialOccupationPercentage() {
-		return (TspecialOccupation / noOfColumns) * 100;
+	public double getSpecialOccupationPercentage(InfoBean row) {
+		return (row.getSpecialOccupation()/TspecialOccupation) * 100;
 	}
 
-	public void setTspecialOccupation(int[] TspecialOccupation) {
+	public void setTspecialOccupation(ArrayList<InfoBean> data) {
 		for(int i = 0; i < noOfColumns; i++){
-			this.TspecialOccupation = this.TspecialOccupation + TspecialOccupation[i];
+			this.TspecialOccupation = this.TspecialOccupation + data.get(i).getSpecialOccupation();
 		}
 	}
 
@@ -46,13 +58,13 @@ public class ColumnData {
 		return Tofficials;
 	}
 
-	public double getOfficialsPercentage() {
-		return (Tofficials / noOfColumns) * 100;
+	public double getOfficialsPercentage(InfoBean row) {
+		return (row.getOfficials()/Tofficials) * 100;
 	}
 
-	public void setTofficials(int[] Tofficials) {
+	public void setTofficials(ArrayList<InfoBean> data) {
 		for(int i = 0; i < noOfColumns; i++){
-			this.Tofficials = this.Tofficials + Tofficials[i];
+			this.Tofficials = this.Tofficials + data.get(i).getOfficials();
 		}
 	}
 
@@ -60,13 +72,13 @@ public class ColumnData {
 		return Tprofessionals;
 	}
 
-	public double getProfessionalsPercentage() {
-		return (Tprofessionals / noOfColumns) * 100;
+	public double getProfessionalsPercentage(InfoBean row) {
+		return (row.getProfessionals()/Tprofessionals) * 100;
 	}
 
-	public void setTprofessionals(int[] Tprofessionals) {
+	public void setTprofessionals(ArrayList<InfoBean> data) {
 		for(int i = 0; i < noOfColumns; i++){
-			this.Tprofessionals = this.Tprofessionals + Tprofessionals[i];
+			this.Tprofessionals = this.Tprofessionals + data.get(i).getProfessionals();
 		}
 	}
 
@@ -74,13 +86,13 @@ public class ColumnData {
 		return Ttechnicians;
 	}
 
-	public double getTechniciansPercentage() {
-		return (Ttechnicians / noOfColumns) * 100;
+	public double getTechniciansPercentage(InfoBean row) {
+		return (row.getTechnicians()/Ttechnicians) * 100;
 	}
 
-	public void setTtechnicians(int[] Ttechnicians) {
+	public void setTtechnicians(ArrayList<InfoBean> data) {
 		for(int i = 0; i < noOfColumns; i++){
-			this.Ttechnicians = this.Ttechnicians + Ttechnicians[i];
+			this.Ttechnicians = this.Ttechnicians + data.get(i).getTechnicians();
 		}
 	}
 
@@ -88,14 +100,14 @@ public class ColumnData {
 		return Tclerks;
 	}
 
-	public double getClerksPercentage() {
-		return (Tclerks / noOfColumns) * 100;
+	public double getClerksPercentage(InfoBean row) {
+		return (row.getClerks()/Tclerks) * 100;
 	}
 
 
-	public void setTclerks(int[] Tclerks) {
+	public void setTclerks(ArrayList<InfoBean> data) {
 		for (int i = 0; i < noOfColumns; i++){
-			this.Tclerks = this.Tclerks + Tclerks[i];
+			this.Tclerks = this.Tclerks + data.get(i).getClerks();
 		}
 	}
 
@@ -103,13 +115,13 @@ public class ColumnData {
 		return TserviceWorkers;
 	}
 
-	public double getServiceWorkersPercentage() {
-		return (TserviceWorkers / noOfColumns) * 100;
+	public double getServiceWorkersPercentage(InfoBean row) {
+		return (row.getServiceWorkers()/TserviceWorkers) * 100;
 	}
 
-	public void setTserviceWorkers(int[] TserviceWorkers) {
+	public void setTserviceWorkers(ArrayList<InfoBean> data) {
 		for (int i = 0; i < noOfColumns; i++){
-			this.TserviceWorkers = this.TserviceWorkers + TserviceWorkers[i];
+			this.TserviceWorkers = this.TserviceWorkers + data.get(i).getServiceWorkers();
 		}
 	}
 
@@ -117,13 +129,13 @@ public class ColumnData {
 		return Tfarmers;
 	}
 
-	public double getFarmersPercentage() {
-		return (Tfarmers / noOfColumns) * 100;
+	public double getFarmersPercentage(InfoBean row) {
+		return (row.getFarmers()/Tfarmers) * 100;
 	}
 
-	public void setTfarmers(int[] Tfarmers) {
+	public void setTfarmers(ArrayList<InfoBean> data) {
 		for (int i = 0; i < noOfColumns; i++){
-			this.Tfarmers = this.Tfarmers + Tfarmers[i];
+			this.Tfarmers = this.Tfarmers + data.get(i).getFarmers();
 		}
 	}
 
@@ -131,13 +143,13 @@ public class ColumnData {
 		return Ttrades;
 	}
 
-	public double getTradesPercentage() {
-		return (Ttrades / noOfColumns) * 100;
+	public double getTradesPercentage(InfoBean row) {
+		return (row.getTrades()/Ttrades) * 100;
 	}
 
-	public void setTtrades(int[] Ttrades) {
+	public void setTtrades(ArrayList<InfoBean> data) {
 		for (int i = 0; i < noOfColumns; i++){
-			this.Ttrades = this.Ttrades + Ttrades[i];
+			this.Ttrades = this.Ttrades + data.get(i).getTrades();
 		}
 	}
 
@@ -145,13 +157,13 @@ public class ColumnData {
 		return Toperators;
 	}
 
-	public double getOperatorsPercentage() {
-		return (Toperators / noOfColumns) * 100;
+	public double getOperatorsPercentage(InfoBean row) {
+		return (row.getOperators()/Toperators) * 100;
 	}
 
-	public void setToperators(int[] Toperators) {
+	public void setToperators(ArrayList<InfoBean> data) {
 		for (int i = 0; i < noOfColumns; i++){
-			this.Toperators = this.Toperators + Toperators[i];
+			this.Toperators = this.Toperators + data.get(i).getOperators();
 		}
 	}
 
@@ -159,13 +171,13 @@ public class ColumnData {
 		return Tlaborers;
 	}
 
-	public double getLaborersPercentage() {
-		return (Tlaborers / noOfColumns) * 100;
+	public double getLaborersPercentage(InfoBean row) {
+		return (row.getLaborers()/Tlaborers) * 100;
 	}
 
-	public void setCTlaborers(int[] Tlaborers) {
+	public void setTlaborers(ArrayList<InfoBean> data) {
 		for (int i = 0; i < noOfColumns; i++){
-			this.Tlaborers = this.Tlaborers + Tlaborers[i];
+			this.Tlaborers = this.Tlaborers + data.get(i).getLaborers();
 		}
 	}
 
@@ -173,13 +185,13 @@ public class ColumnData {
 		return Tnone;
 	}
 
-	public double getNonePercentage() {
-		return (Tnone / noOfColumns) * 100;
+	public double getNonePercentage(InfoBean row) {
+		return (row.getNone()/Tnone) * 100;
 	}
 
-	public void setTnone(int[] Tnone) {
+	public void setTnone(ArrayList<InfoBean> data) {
 		for (int i = 0; i < noOfColumns; i++){
-			this.Tnone = this.Tnone + Tnone[i];
+			this.Tnone = this.Tnone + data.get(i).getNone();
 		}
 	}
 
@@ -187,13 +199,13 @@ public class ColumnData {
 		return TnoAnswer;
 	}
 
-	public double getNoAnswerPercentage() {
-		return (TnoAnswer / noOfColumns) * 100;
+	public double getNoAnswerPercentage(InfoBean row) {
+		return (row.getNoAnswer()/TnoAnswer) * 100;
 	}
 
-	public void setTnoAnswer(int[] TnoAnswer) {
+	public void setTnoAnswer(ArrayList<InfoBean> data) {
 		for (int i = 0; i < noOfColumns; i++){
-			this.TnoAnswer = this.TnoAnswer + TnoAnswer[i];
+			this.TnoAnswer = this.TnoAnswer + data.get(i).getNoAnswer();
 		}
 	}
 
