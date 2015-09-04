@@ -2,13 +2,17 @@ package CSVProcess;
 import javafx.beans.property.*;
 
 public class InfoBean {
-	String region;
-	int total, specialOccupation,
+	private String region;
+	private int total, specialOccupation,
 	officials, professionals;
-	int technicians, clerks,
+	private int technicians, clerks,
 	serviceWorkers, farmers, trades;
-	int operators, laborers, none,
+	private int operators, laborers, none,
 	noAnswer;
+
+	double specialOccupationRowPercentage, officialsRowPercentage, professionalsRowPercentage, techniciansRowPercentage, 
+			clerksRowPercentage, serviceWorkersRowPercentage, farmersRowPercentage, tradesRowPercentage, 
+			operatorsRowPercentage, laborersRowPercentage, noneRowPercentage, noAnswerRowPercentage;
 	
 	public SimpleStringProperty regionView;
 	public SimpleIntegerProperty totalView, specialOccupationView,officialsView,professionalsView;
@@ -211,7 +215,77 @@ public class InfoBean {
 	}
 
 
+	private void setSpecialOccupationRowPercentage(int total) {
+		this.specialOccupationRowPercentage = (this.specialOccupation / total) * 100;
+	}
+
+
+	private void setOfficialsRowPercentage(int total) {
+		this.officialsRowPercentage = (this.officials/total) *100;
+	}
+
+
+	private void setProfessionalsRowPercentage(int total) {
+		this.professionalsRowPercentage = (this.professionals/total) *100;;
+	}
+
+
+	private void setTechniciansRowPercentage(int total) {
+		this.techniciansRowPercentage = (this.technicians/total) *100;;
+	}
+
+
+	private void setClerksRowPercentage(int total) {
+		this.clerksRowPercentage = (this.clerks/total) *100;;
+	}
+
+
+	private void setServiceWorkersRowPercentage(int total) {
+		this.serviceWorkersRowPercentage = (this.serviceWorkers/total) *100;;
+	}
+
+
+	private void setFarmersRowPercentage(int total) {
+		this.farmersRowPercentage = (this.farmers/total) *100;;
+	}
+
+
+	private void setTradesRowPercentage(int total) {
+		this.tradesRowPercentage = (this.trades/total) *100;;
+	}
+
+
+	private void setOperatorsRowPercentage(int total) {
+		this.operatorsRowPercentage = (this.operators/total) *100;;
+	}
+
+
+	private void setLaborersRowPercentage(int total) {
+		this.laborersRowPercentage = (this.laborers/total) *100;;
+	}
+
+
+	private void setNoneRowPercentage(int total) {
+		this.noneRowPercentage = (this.none/total) *100;;
+	}
+
+
+	private void setNoAnswerRowPercentage(int total) {
+		this.noAnswerRowPercentage = (this.noAnswer/total) *100;;
+	}
 	
-	
-	
+	public void initializeAllRowPercentage(){
+		this.setClerksRowPercentage(this.total);
+		this.setFarmersRowPercentage(this.total);
+		this.setLaborersRowPercentage(this.total);
+		this.setNoAnswerRowPercentage(this.total);
+		this.setNoneRowPercentage(this.total);
+		this.setOfficialsRowPercentage(this.total);
+		this.setOperatorsRowPercentage(this.total);
+		this.setProfessionalsRowPercentage(this.total);
+		this.setServiceWorkersRowPercentage(this.total);
+		this.setSpecialOccupationRowPercentage(this.total);
+		this.setTechniciansRowPercentage(this.total);
+		this.setTradesRowPercentage(this.total);
+	}
 }
