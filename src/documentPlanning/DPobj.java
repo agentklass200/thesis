@@ -3,30 +3,27 @@ package documentPlanning;
 import java.util.ArrayList;
 
 public class DPobj {
-	private String type, object;
+	private String type;
 	private boolean areChildrenExist;
 	private boolean	isRoot;
 	
 	private DPobj parent;
 	private ArrayList<DPobj> children;
 	
-	public DPobj(String type, String obj){
-		this.object = obj;
+	public DPobj(String type){
 		this.type = type;
 		areChildrenExist = false;
 		isRoot = true;
 	}
 	
-	public DPobj(String type, String obj, DPobj parent){
-		this.object = obj;
+	public DPobj(String type, DPobj parent){
 		this.type = type;
 		this.setParent(parent);
 		areChildrenExist = false;
 		isRoot = false;
 	}
 	
-	public DPobj(String type, String obj, DPobj parent, ArrayList<DPobj> children){
-		this.object = obj;
+	public DPobj(String type, DPobj parent, ArrayList<DPobj> children){
 		this.type = type;
 		this.parent = parent;
 		this.children = children;
@@ -65,14 +62,6 @@ public class DPobj {
 
 	public void setType(String type) {
 		this.type = type;
-	}
-
-	public String getObject() {
-		return object;
-	}
-
-	public void setObject(String object) {
-		this.object = object;
 	}
 
 	public DPobj getParent() {
