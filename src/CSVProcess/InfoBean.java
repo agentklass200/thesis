@@ -9,6 +9,25 @@ public class InfoBean {
 	serviceWorkers, farmers, trades;
 	private int operators, laborers, none,
 	noAnswer;
+	
+	public InfoBean clone(){
+		InfoBean b = new InfoBean();
+		b.region = this.region;
+		b.total =this.total;
+		b.specialOccupation = this.specialOccupation;
+		b.officials = this.officials;
+		b.professionals = this.professionals;
+		b.technicians = this.technicians;
+		b.clerks = this.clerks;
+		b.serviceWorkers = this.serviceWorkers;
+		b.farmers = this.farmers;
+		b.trades = this.trades;
+		b.operators = this.operators;
+		b.laborers = this.laborers;
+		b.none = this.none;
+		b.noAnswer = this.noAnswer;
+		return b;
+	}
 
 	double specialOccupationRowPercentage, officialsRowPercentage, professionalsRowPercentage, techniciansRowPercentage, 
 			clerksRowPercentage, serviceWorkersRowPercentage, farmersRowPercentage, tradesRowPercentage, 

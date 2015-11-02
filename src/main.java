@@ -11,11 +11,15 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser;
+
+import java.util.List;
 import java.io.*;
 import java.util.ArrayList;
 
 import CSVProcess.CSVProcessing;
 import CSVProcess.InfoBean;
+import data.Sort;
+import data.tableObject;
 
 
 
@@ -29,7 +33,11 @@ public class main extends Application{
 	Scene scene[], activeScene;
 	File activeFile;
 	ArrayList<InfoBean> data;
-
+	List<InfoBean> list;
+	int sceneNo = 0;
+	
+	ArrayList<InfoBean> topPopulation =  new ArrayList<InfoBean>();
+	ArrayList<InfoBean> topNone = new ArrayList<InfoBean>();
 	
 	
 	public static void main(String[] args){
@@ -74,6 +82,7 @@ public class main extends Application{
 		
 		next = new Button("Next");
 		
+		
 		//NP Container
 		
 		HBox npContainer = new HBox();
@@ -90,7 +99,7 @@ public class main extends Application{
 		//Initializing Scene
 		
 		Scene scene[] = new Scene[3];
-		int sceneNo = 0;
+		
 		
 		scene[0] = new Scene(layout, 700, 500);
 		activeScene = scene[sceneNo];
@@ -100,8 +109,10 @@ public class main extends Application{
 		Label scene2Label = new Label("Hello World!");
 				
 		VBox layout1 = new VBox();
+		VBox layout2 = new VBox();
 				
 		scene[1] = new Scene(layout1, 700, 500);
+		scene[2] = new Scene(layout2, 700, 500);
 				
 		//Initializing Stage Hello World!
 		
@@ -125,24 +136,51 @@ public class main extends Application{
 		
 		next.setOnAction(e -> {
 			activeScene = changeScene(scene, sceneNo);
+			sceneNo = sceneNo + 1;
 			window.setScene(activeScene);
 			activeScene.getStylesheets().add("style.css");
-			data = new ArrayList<InfoBean>();
-			try {
-				data = CSVProcessing.readCSV(activeFile.getAbsolutePath(), data);
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+			if(sceneNo == 1){
+				data = new ArrayList<InfoBean>();
+				try {
+					data = CSVProcessing.readCSV(activeFile.getAbsolutePath(), data);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				ArrayList<InfoBean> listOccupation = cloneArrayList(data);
+				ArrayList<InfoBean> listNoOccupation = cloneArrayList(data); 
+				
+				Sort sort = new Sort();
+				topPopulation = sort.sortTotal(listOccupation);
+				topNone = sort.sortNone(listNoOccupation);
+				System.out.println();
+				sort.listSortedColumn("Total", listOccupation);
+				System.out.println();
+				sort.listSortedColumn("noOccupation", listNoOccupation);
+				
+				
+				layout1.setAlignment(Pos.CENTER);
+				
+				layout1.getChildren().add(this.createTableView(data));
+				layout1.getChildren().add(next);
+			}
+			else if(sceneNo == 2){
+				
 			}
 			
-			layout1.getChildren().add(this.createTableView(data));
 			
-//			for(int i = 0; i < data.size(); i++){
-//				System.out.println(data.get(i).toString());
-//			}
-//			
-//			System.out.println(data.size());
 		});
+	}
+	
+	public static ArrayList<InfoBean> cloneArrayList(ArrayList<InfoBean> list){
+		ArrayList<InfoBean> clone = new ArrayList<InfoBean>();
+		for(InfoBean newList: list){
+			InfoBean a = new InfoBean();
+			a = newList.clone();
+			clone.add(a);
+		}
+		return clone;
 	}
 	
 	public TableView createTableView(ArrayList<InfoBean> data){
@@ -213,12 +251,7 @@ public class main extends Application{
 		table.getColumns().addAll(regionCol, totalCol, specialOccupationCol, officialsCol, professionalsCol, techniciansCol, clerksCol, serviceWorkersCol, farmersCol, tradesCol, operatorsCol, laborersCol, noneCol, noAnswerCol );
 		
 		table.setItems(values);
-		
-		for(int i = 0; i < values.size(); i++){
-			System.out.println(values.get(i).toString());
-		}
-	
-		System.out.println(values.size());
+
 		
 		return table;
 	}
@@ -228,6 +261,23 @@ public class main extends Application{
 			return scene[0];
 		}
 		return scene[counter + 1];
+	}
+	
+	public static ArrayList<tableObject> createRow(InfoBean obj){
+		ArrayList<tableObject> objList = new ArrayList<tableObject>();
+		objList.add(new tableObject(obj.getSpecialOccupationColumnName(), obj.getSpecialOccupation()));
+		objList.add(new tableObject(obj.getOfficialsColumnName(), obj.getOfficials()));
+		objList.add(new tableObject(obj.getProfessionalsColumnName(), obj.getOfficials()));
+		objList.add(new tableObject(obj.getTechniciansColumnName(), obj.getTechnicians()));
+		objList.add(new tableObject(obj.getClerksColumnName(), obj.getClerks()));
+		objList.add(new tableObject(obj.getServiceWorkersColumnName(), obj.getServiceWorkers()));
+		objList.add(new tableObject(obj.getFarmersColumnName(), obj.getFarmers()));
+		objList.add(new tableObject(obj.getTradesColumnName(), obj.getTrades()));
+		objList.add(new tableObject(obj.getOperatorsColumnName(), obj.getOperators()));
+		objList.add(new tableObject(obj.getLaborersColumnName(), obj.getLaborers()));
+		objList.add(new tableObject(obj.getNoneColumnName(), obj.getNone()));
+		objList.add(new tableObject(obj.getNoAnswerColumnName(), obj.getNoAnswer()));
+		return objList;
 	}
 
 	
