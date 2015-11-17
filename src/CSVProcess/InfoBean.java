@@ -157,7 +157,7 @@ public class InfoBean {
 	}
 
 	public String getFarmersColumnName() {
-		return "Farmers, Forestry, Workers and Fishermen";
+		return "Farmers, Forestry Workers and Fishermen";
 	}
 
 	public void setFarmers(int farmers) {
@@ -224,14 +224,6 @@ public class InfoBean {
 		this.noAnswer = noAnswer;
 	}
 	
-	@Override
-	public String toString() {
-		return "[region=" + region + ", total=" + total + ", specialOccupation=" + specialOccupation
-				+ ", officials=" + officials + ", professionals=" + professionals + ", technicians=" + technicians
-				+ ", clerks=" + clerks + ", serviceWorkers=" + serviceWorkers + ", farmers=" + farmers + ", trades="
-				+ trades + ", operators=" + operators + ", laborers=" + laborers + ", none=" + none + ", noAnswer="
-				+ noAnswer + "]";
-	}
 
 
 	private void setSpecialOccupationRowPercentage(int total) {
@@ -260,7 +252,7 @@ public class InfoBean {
 
 
 	private void setServiceWorkersRowPercentage(int total) {
-		this.serviceWorkersRowPercentage = (this.serviceWorkers/total) *100;;
+		this.serviceWorkersRowPercentage = (this.serviceWorkers/total) *100;
 	}
 
 

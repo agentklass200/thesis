@@ -8,10 +8,10 @@ public class nodeObject {
 	private int order;
 
 	
-	public static String TEXT_STRUCTURE = "textStructure";
-	public static String CATEGORY = "category";
-	public static String MESSAGE = "message";
-	public static String VALUE = "message-value";
+	public static final String TEXT_STRUCTURE = "textStructure";
+	public static final String CATEGORY = "category";
+	public static final String MESSAGE = "message";
+	public static final String VALUE = "message-value";
 	
 	public nodeObject(String type, String nodeName, Object value, int order){
 		this.type = type;
@@ -24,6 +24,10 @@ public class nodeObject {
 			this.identifier = false;
 		}
 		this.order = order;
+		
+		
+		
+		
 	}
 	
 	public String getType() {
@@ -60,6 +64,7 @@ public class nodeObject {
 	public void setOrder(int order) {
 		this.order = order;
 	}
+
 	
 	
 }

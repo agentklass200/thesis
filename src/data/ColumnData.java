@@ -188,6 +188,8 @@ public class ColumnData {
 	public double getNonePercentage(InfoBean row) {
 		return (row.getNone()/Tnone) * 100;
 	}
+	
+	
 
 	public void setTnone(ArrayList<InfoBean> data) {
 		for (int i = 0; i < noOfColumns; i++){

@@ -29,9 +29,7 @@ public class CSVProcessing {
 
 			while((bean = beanReader.read(InfoBean.class, header, processor)) != null){
 				data.add(bean);
-
 			}
-			
 			return data;
 		}
 		finally{

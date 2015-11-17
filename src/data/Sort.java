@@ -1,6 +1,8 @@
 package data;
 
 import CSVProcess.InfoBean;
+import user.Config;
+
 import java.util.*;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -10,24 +12,37 @@ public class Sort {
 		System.out.println("Length = " + list.size());
 	}
 	
-	public  ArrayList<InfoBean> sortTotal(ArrayList<InfoBean> list){
+	public static  ArrayList<InfoBean> sortTotal(ArrayList<InfoBean> list, Config user){
 		for(int i = 0; i < list.size() ; i++){
 			for(int j = 1; j < list.size() - i; j++){
-				System.out.println(list.get(j));
-				if(list.get(j-1).getTotal() < list.get(j).getTotal()){
-					Collections.swap(list, (j-1), j);
+				if(user.getModeVariants() == Config.HIGHEST_AREA_HIGHEST_OCCU || user.getModeVariants() == Config.HIGHEST_AREA_LOWEST_OCCU){
+					if(list.get(j-1).getTotal() < list.get(j).getTotal()){
+						Collections.swap(list, (j-1), j);
+					}
 				}
+				else{
+					if(list.get(j-1).getTotal() > list.get(j).getTotal()){
+						Collections.swap(list, (j-1), j);
+					}
+				}
+				
 			}
 		}
 		return list;
 	}
 	
-	public  ArrayList<InfoBean> sortNone(ArrayList<InfoBean> list){
+	public static  ArrayList<InfoBean> sortNone(ArrayList<InfoBean> list, Config user){
 		for(int i = 0; i < list.size() ; i++){
 			for(int j = 1; j < list.size() - i; j++){
-				System.out.println(list.get(j));
-				if(list.get(j-1).getNone() < list.get(j).getNone()){
-					Collections.swap(list, (j-1), j);
+				if(user.getModeVariants() == Config.HIGHEST_AREA_HIGHEST_OCCU || user.getModeVariants() == Config.HIGHEST_AREA_LOWEST_OCCU){
+					if(list.get(j-1).getTotal() < list.get(j).getTotal()){
+						Collections.swap(list, (j-1), j);
+					}
+				}
+				else{
+					if(list.get(j-1).getTotal() > list.get(j).getTotal()){
+						Collections.swap(list, (j-1), j);
+					}
 				}
 			}
 		}
@@ -36,11 +51,18 @@ public class Sort {
 	
 
 	
-	public  ArrayList<tableObject> sortRow(ArrayList<tableObject> list){
+	public static  ArrayList<tableObject> sortRow(ArrayList<tableObject> list, Config user){
 		for(int i = 0; i < list.size() ; i++){
 			for(int j = 1; j < list.size() - i; j++){
-				if(list.get(j-1).getValue() < list.get(j).getValue()){
-					Collections.swap(list, (j-1), j);
+				if(user.getModeVariants() == Config.HIGHEST_AREA_HIGHEST_OCCU || user.getModeVariants() == Config.LOWEST_AREA_HIGHEST_OCCU){
+					if(list.get(j-1).getValue() < list.get(j).getValue()){
+						Collections.swap(list, (j-1), j);
+					}
+				}
+				else{
+					if(list.get(j-1).getValue() > list.get(j).getValue()){
+						Collections.swap(list, (j-1), j);
+					}
 				}
 			}
 		}
@@ -48,19 +70,19 @@ public class Sort {
 	}
 	
 	
-	public  ArrayList<InfoBean> chooseColumn(String sortColumn, ArrayList<InfoBean> list){
-		switch(sortColumn){
-			case "Total":
-				sortTotal(list);	
-				break;
-			case "No Occupation":
-				sortNone(list);
-				break;
-			default:
-				System.out.println("String is invalid");
-		}
-		return list;
-	}
+//	public static ArrayList<InfoBean> chooseColumn(String sortColumn, ArrayList<InfoBean> list){
+//		switch(sortColumn){
+//			case "Total":
+//				sortTotal(list);	
+//				break;
+//			case "No Occupation":
+//				sortNone(list);
+//				break;
+//			default:
+//				System.out.println("String is invalid");
+//		}
+//		return list;
+//	}
 	
 	public void  listSortedColumn(String type ,ArrayList<InfoBean> list){
 		if(type == "Total"){
